@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HII babii</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #E0B0FF;
+            margin: 0;
+            padding: 20px;
+            body {
+  background-color: #E08282;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.envelope-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: block;
+  transform: translate(-50%, -20%);
+}
+
+.envelope {
+  position: relative;
+  display: block;
+  width: 300px;
+  height: 200px;
+  margin: auto;
+  background-color: #C9D0D2;
+}
+
+.envelope .envelope__card {
+  position: absolute;
+  bottom: 0;
+  display: block;
+  width: 250px;
+  height: 200px;
+  margin: 0 25px;
+  background-color: #f5f6d6;
+}
+
+.envelope .envelope__card.open {
+  -webkit-animation: cardJump .5s ease .5s forwards;
+  -o-animation: cardJump .5s ease .5s forwards;
+  animation: cardJump .5s ease .5s forwards;
+  z-index: 1;
+}
+
+.envelope .enveloper__card-text {
+  padding: 10px 20px;
+  font-size: 42px;
+  margin: 0;
+  color: black;
+  font-family: 'Amatic SC', cursive;
+}
+
+.envelope .envelope__side {
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  z-index: 2;
+}
+
+.envelope .envelope__side--left {
+  left: 0;
+  border-width: 100px 0 100px 150px;
+  border-color: transparent transparent transparent #ffffff;
+}
+
+.envelope .envelope__side--right {
+  right: 0;
+  border-width: 100px 150px 100px 0;
+  border-color: transparent #ffffff transparent transparent;
+}
+
+.envelope .envelope__side--bottom {
+  top: auto;
+  left: 0;
+  bottom: 0;
+  border-width: 0 150px 100px 150px;
+  border-color: transparent transparent #ecf0f1 transparent;
+}
+
+.envelope .envelope__side--top {
+  top: 0;
+  left: 0;
+  bottom: auto;
+  border-width: 100px 150px 0 150px;
+  border-color: #ecf0f1 transparent transparent transparent;
+  z-index: 1;
+}
+
+.envelope.open > .envelope__side--top {
+  top: -100px;
+  border-width: 0 150px 100px 150px;
+  border-color: transparent transparent #C9D0D2 transparent;
+}
+
+.heart {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  margin-top: -25%;
+  margin-left: -25px;
+  width: 50px;
+  fill: red;
+  z-index: 2;
+  transition: 0.2s;
+}
+
+.envelope:hover .heart {
+  transform: scale(1.2);
+  trasition: .5s ease;
+}
+
+.envelope.open:hover .heart {
+  transform: none;
+}
+
+.tossing{
+  animation-name: tossing;
+  -webkit-animation-name: tossing;
+
+  animation-duration: .5s;
+  -webkit-animation-duration: .5s;
+
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
+
+  -webkit-animation-timing-function: ease;
+  animation-timing-function: ease;
+}
+        }
+    </style>
+    <header>
+        <h1 class="arc-glow" style="position: absolute; top: 20%; left: 50%; transform: translateX(-50%); z-index: 10;">You got mail!</h1>
+    </header>
+    <style>
+        .arc-glow {
+            display: block;
+            width: 100%;
+            text-align: center;
+            font-size: 2.5em;
+            font-family: 'Amatic SC', cursive;
+            color: #fff;
+            margin-bottom: 40px;
+            margin-top: 40px;
+            letter-spacing: 2px;
+            text-shadow:
+                0 0 10px #fff,
+                0 0 20px #E08282,
+                0 0 30px #E0B0FF,
+                0 0 40px #E0B0FF;
+            /* Arc effect */
+            position: relative;
+            height: 80px;
+        }
+        .arc-glow span {
+            display: inline-block;
+            position: relative;
+            transform-origin: bottom center;
+            animation: wobble 2s infinite ease-in-out;
+            /* Add smooth animation */
+            animation-delay: calc(var(--i) * 0.07s);
+        }
+        @keyframes wobble {
+            0% { transform: rotate(var(--angle)) translateY(-40px) scale(1); }
+            20% { transform: rotate(calc(var(--angle) + 3deg)) translateY(-42px) scale(1.05);}
+            40% { transform: rotate(calc(var(--angle) - 3deg)) translateY(-38px) scale(0.97);}
+            60% { transform: rotate(calc(var(--angle) + 2deg)) translateY(-41px) scale(1.03);}
+            80% { transform: rotate(calc(var(--angle) - 2deg)) translateY(-39px) scale(0.99);}
+            100% { transform: rotate(var(--angle)) translateY(-40px) scale(1);}
+        }
+    </style>
+    <script>
+        // Arc text effect with smooth wobble
+        document.addEventListener("DOMContentLoaded", function() {
+            var h1 = document.querySelector('.arc-glow');
+            if (!h1) return;
+            var text = h1.textContent;
+            h1.textContent = '';
+            var radius = 220;
+            var angleStep = 120 / (text.length - 1); // degrees
+            for (var i = 0; i < text.length; i++) {
+                var span = document.createElement('span');
+                span.textContent = text[i];
+                var angle = -60 + i * angleStep; // from -60deg to +60deg
+                span.style.setProperty('--angle', angle + 'deg');
+                span.style.setProperty('--i', i);
+                h1.appendChild(span);
+            }
+        });
+    </script>
+    <main>
+          <body>
+    <svg style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+      <defs>
+          <symbol id="icon-heart" viewBox="0 0 32 32">
+              <title>heart</title>
+              <path d="M23.6 2c-3.363 0-6.258 2.736-7.599 5.594-1.342-2.858-4.237-5.594-7.601-5.594-4.637 0-8.4 3.764-8.4 8.401 0 9.433 9.516 11.906 16.001 21.232 6.13-9.268 15.999-12.1 15.999-21.232 0-4.637-3.763-8.401-8.4-8.401z"></path>
+          </symbol>
+          <symbol id="icon-heart-broken" viewBox="0 0 32 32">
+              <title>heart-broken</title>
+              <path d="M23.6 2c4.637 0 8.4 3.764 8.4 8.401 0 9.132-9.87 11.964-15.999 21.232-6.485-9.326-16.001-11.799-16.001-21.232 0-4.637 3.763-8.401 8.4-8.401 1.886 0 3.625 0.86 5.025 2.12l-2.425 3.88 7 4-4 10 11-12-7-4 1.934-2.901c1.107-0.68 2.35-1.099 3.665-1.099z"></path>
+          </symbol>
+      </defs>
+  </svg>
+<div class="container">
+        <a class="envelope-wrapper js-open-envelope" href="#">
+                <div class="envelope tossing">
+                        <!-- Shadow underneath the envelope -->
+                        <div class="envelope-shadow" style="position: absolute; left: 0; right: 0; bottom: -30px; width: 100%; height: 32px; background: radial-gradient(ellipse at center, rgba(80,80,80,0.25) 0%, rgba(80,80,80,0.10) 80%, rgba(80,80,80,0) 100%); border-radius: 50%; z-index: 0;"></div>
+                        <div class="envelope__side envelope__side--top"></div>
+                        <div class="envelope__card"></div>
+                        <div class="envelope__side envelope__side--right"></div>
+                        <div class="envelope__side envelope__side--left"></div>
+                        <div class="envelope__side envelope__side--bottom"></div>
+                        <style>
+                            /* Center the envelope wrapper */
+                            .container {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                min-height: 100vh;
+                                position: relative;
+                            }
+                            .envelope-wrapper {
+                                position: relative;
+                                top: 0;
+                                left: 0;
+                                transform: none;
+                                margin: 0 auto;
+                                display: block;
+                            }
+                            /* Floating animation for the envelope */
+                            .envelope.tossing {
+                                animation: floatEnvelope 3s ease-in-out infinite;
+                            }
+                            @keyframes floatEnvelope {
+                                0% { transform: translateY(0); }
+                                50% { transform: translateY(-30px); }
+                                100% { transform: translateY(0); }
+                            }
+                        </style>
+                        <!-- Place the heart absolutely centered over the envelope -->
+                        <span onclick="window.location.href='flower1.html'" style="cursor:pointer; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 3;">
+                            <svg class="heart"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-heart"></use></svg>
+                        </span>
+                </div>
+        </a>
+</div>
+      </a>
+  </div>
+    </footer>
+</body>
+</html>

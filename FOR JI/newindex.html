@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Please say yes</title>
+<style>
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background: #fff5cc;
+    font-family: Arial,sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.envelope {
+    width: 200px;
+    height: 100px;
+    background: #ffcccb;
+    position: relative;
+    border-radius: 10px 10px 5px 5px;
+    margin-bottom: 0;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    transform-origin: bottom center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.envelope.open {
+    transform: translateY(-100px) scaleY(0.1);
+    height: 0px;
+    background: none;
+    overflow: visible;
+    transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), height 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55), background 0.5s;
+}
+.letter {
+    width: 300px;
+    height: auto;
+    background: #ffffff;
+    border: 5px solid #ffcccb;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+    box-shadow: 0 4px 10px -5px black;
+    display: none;
+    max-width: 400px;
+    margin: 0 auto;
+    opacity: 0;
+    text-align: justify;
+    align-items: flex-start;
+}
+
+.envelope.open + .letter {
+    display: block;
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+}
+
+/* Hide the heart when envelope is open */
+.envelope.open .heart {
+    display: none;
+}
+
+.heart {
+    font-size: 50px;
+    color: red;
+    cursor: pointer;
+    animation: pulse 1s infinite, bounceHeart 1.2s infinite;
+    z-index: 2;
+    /* Center heart inside envelope */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    pointer-events: auto;
+}
+
+@keyframes bounceHeart {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    20% { transform: translate(-50%, -60%) scale(1.08); }
+    40% { transform: translate(-50%, -45%) scale(0.96); }
+    60% { transform: translate(-50%, -55%) scale(1.04); }
+    80% { transform: translate(-50%, -48%) scale(0.98); }
+}
+
+@keyframes bounceEnvelope {
+    0%, 100% { transform: translateY(0) scale(1); }
+    20% { transform: translateY(-12px) scale(1.08); }
+    40% { transform: translateY(-6px) scale(0.96); }
+    60% { transform: translateY(-10px) scale(1.04); }
+    80% { transform: translateY(-3px) scale(0.98); }
+}
+
+.envelope {
+    margin: 0 auto;
+    position: relative;
+    animation: bounceEnvelope 2.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+}
+
+.heart {
+    animation: pulse 1s infinite, bounceHeart 2.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+    <div class="envelope" id="envelope">
+        <div class="heart" id="heartBtn">❤️</div>
+    </div>
+    <div class="letter">
+        <h2 style="text-align: left; margin-top: 0;">Hi babii</h2>
+        <p style="text-indent: 2em;"> I know we’re moving kind of fast, but I honestly can’t deny how much I already want and love you. I’ve fallen so deeply for you — for the way you think, your maturity, your voice, your beauty, and everything about you, inside and out. I can’t pretend it isn’t true; I’m already falling hard, even from our little conversations.
+
+Every day that passes, you’re constantly in my thoughts. I want to know more about you, to be close to you, to love you more and more, and to appreciate all the wonderful things that make you who you are. I hope we can grow together, make sweet memories side by side, and fill our days with happiness and love.</p>
+        <p style="text-indent: 2em;"> With all of that said, Jessemina Deloso, may I court you?</p>
+        <p style="text-align: right; margin-bottom: 0;">Your babi,</p>
+        <p style="text-align: right; margin-top: 0;">Ellie</p>   
+        </p>
+    </div>
+</div>
+<div style="margin-top: 30px; display: flex; justify-content: flex-end; align-items: center">
+    <img src="yes.gif" alt="GIF Placeholder" style="border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.15); transform: scaleX(-1); margin-left: 20px; position: relative; left: 65px;">
+</div>
+
+<script>
+    document.getElementById('heartBtn').addEventListener('click', () => {
+        document.getElementById('envelope').classList.toggle('open');
+    });
+</script>
+<!-- Spotify Embed (autoplay, hidden controls) -->
+<div style="margin-top: 20px; display: flex; justify-content: center;">
+    <iframe style="border-radius:12px; margin-left: 200px;" src="https://open.spotify.com/embed/track/1bYRmNYrXbzbLq1CEBZHRe?utm_source=generator" width="300" height="500" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+</div>
+</body>
+</html>
